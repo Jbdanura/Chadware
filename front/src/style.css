@@ -3,19 +3,20 @@
     padding: 0;
 }
 body{
-    background-color: rgb(54, 54, 54);
+    background-color: rgb(37, 37, 37);
     font-family: "Helvetica",Arial;
 }
 .container{
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     width: 80vw;
     margin: 0 auto;
     color: white;
 }
-.sidebar h4{
+.sidebar h4, .sidebar-mobile h4{
     color: rgb(130, 188, 255);
     font-size: 30px;
+    margin-bottom: 20px;
 }
 .logo{
     width: 80%;
@@ -31,7 +32,8 @@ body{
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
-    width: 100%;
+    width: 90%;
+    margin-bottom: 40px;
 }
 
 .cart:hover{
@@ -42,4 +44,88 @@ body{
 
 .content{
     margin-left: 100px;
+}
+ul{
+    list-style-type: none;
+}
+.sidebar li, .sidebar-mobile li{
+    color: rgb(180, 180, 180);
+    margin: 10px 0;
+}
+.search{
+    margin-bottom: 30px;
+}
+.categories{
+    margin-bottom: 40px;
+}
+
+.hamburger{
+    display: none;
+    width: 30px;
+    padding: 5px;
+}
+.hamburger:hover{
+    cursor: pointer;
+}
+
+.line{
+    height: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(102, 185, 240);
+}
+.mobile-menu .cart{
+    display: none;
+}
+.search{
+    display: flex;
+}
+.search-input{
+    height: 30px;
+    width: 80%;
+    padding: 5px;
+    font-size: 17px;
+}
+.search-btn{
+    padding: 13px;
+    background-color: rgba(0, 255, 55, 0.575);
+}
+@media screen and (max-width: 1000px) {
+    .container{
+        display: block;
+    }
+    .logo{
+        width: 100%;
+        height: 200px;
+    }
+    .hamburger{
+        display: block;
+    }
+    .sidebar{
+        display: none;
+    }
+    .sidebar-mobile{
+        display: block;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 40vw;
+        text-align: center;
+        background-color: rgb(37, 37, 37);
+        border: 1px solid rgba(0, 0, 0, 0.37);
+    }
+    .mobile-menu{
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+    }
+    .container .cart{
+        display: none;
+    }
+    .mobile-menu .cart{
+        width: 150px;
+        margin: 0;
+        text-align: center;
+        display: flex;
+    }
+
 }
