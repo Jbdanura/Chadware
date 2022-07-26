@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Helvetica";
+}
+
+.navbar{
+    width: 100vw;
+    display: flex;
+    background-color: rgb(64, 92, 61);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    height: 70px;
+    align-items: center;
+    font-size: 22px;
+}
+.logo{
+    margin: 0 100px;
+    color: white;
+    font-size: 35px;
+    text-shadow: -1px 1px 2px #000,
+				  1px 1px 2px #000,
+				  1px -1px 0 #000,
+				  -1px -1px 0 #000;
+}
+.chad{
+    color: rgb(134, 196, 42);
+}
+.ware{
+    color: rgb(165, 241, 50)
+}
+.navbar-elements{
+    display: flex;
+}
+
+.navbar li{
+    margin: 0 20px 0 0;
+}
+
+
+.hamburger{
+    position: absolute;
+    right: 10px;
+    display: none;
+    border: 1px solid rgb(31, 48, 29);
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(76, 109, 73);
+}
+.hamburger .line{
+    height: 5px;
+    width: 30px;
+    background-color: black;
+    margin-bottom: 4px;
+}
+
+ul{
+    list-style: none;
+}
+.products{
+    color: rgb(238, 238, 238);
+    padding-right: 15px;
+}
+.navbar *:hover{
+    cursor: pointer;
+}
+.products-dropdown{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.158);
+}
+.products-dropdown * {
+    padding: 15px 10px;
+    font-size: 20px;
+}
+.products-dropdown *:hover {
+    background-color: #ffffff;
+}
+.products:hover .products-dropdown{
+    display: block;
+}
+
+.nav-home{
+    color: white;
+    margin-right: 30px;
+}
+.nav-login{
+    color: white;
+    position: absolute;
+    right: 50px;
+}
+@media screen and (max-width:1200px) {
+    .navbar p{
+        display: block;
+    }
+    .navbar-elements{
+        display: none;
+    }
+    @keyframes show {
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    .navbar-elements-mobile{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        position: absolute;
+        top: 70px;
+        background-color: rgb(80, 114, 76);
+        width: 100%;
+        animation: show 600ms 100ms cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+        opacity: 0;
+        transform: rotateX(-90deg);
+        transform-origin: top center;
+    }
+    .navbar-elements-mobile * {
+        width: 100%;
+        padding: 10px 0;
+    }
+    .navbar-elements-mobile *:hover{
+        background-color: rgb(96, 136, 91);
+    }
+    .products-dropdown-mobile{
+        display: none;
+    }
+    .products:hover .products-dropdown-mobile{
+        display: block;
+    }
+    .products-dropdown-mobile *:hover{
+        font-size: 24px;
+    }
+    .hamburger{
+        display: block;
+    }
+    .nav-login{
+        position: relative;
+        text-align: center;
+        right: 0;
+    }
+}
