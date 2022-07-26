@@ -1,34 +1,29 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
+import logo from "./img.png"
 
 const App = () =>{
-   const [navbarVisible, setNavbarVisible] = useState(false)
-
 
    return(
-         <div>
-            <div className="navbar">
-               <span className="logo"><span className="chad">Chad</span><span className="ware">ware</span></span>
-               <ul className={navbarVisible ? "navbar-elements-mobile" : "navbar-elements"}>
-                  <p className="nav-home">Home</p>
-                  <div className="products">
-                     <span className="products">Products</span>
-                     <div className={navbarVisible ? "products-dropdown-mobile" : "products-dropdown"}>
-                        <p>Motherboard</p>
-                        <p>Graphic Card</p>
-                        <p>CPU</p>
-                     </div>
+      <div>
+         <img className="logo" src={logo}></img>
+         <div className="container">
+            <div className="sidebar">
+                  <div className="cart">
+                        <span className="cart-items"><i class="icon-shopping-cart" style={{marginRight:"5px"}}></i>69 items</span>
+                        <span className="cart-money">$420</span>
                   </div>
-                  <li style={{color:"#f9f9f9"}}>About</li>
-                  <p className="nav-login">Account</p>
-               </ul>
-               <div className="hamburger" onClick={()=>setNavbarVisible(!navbarVisible)}>
-                  <div className="line"></div>
-                  <div className="line"></div>
-                  <div className="line"></div>
-               </div>
-               
+                  <div className="categories">
+                        <h4>Categories</h4>
+                  </div>
+                  <div className="pages">
+                        pages
+                  </div>
+            </div>
+            <div className="content">
+                  content
             </div>
          </div>
+      </div>
       );
 
 }
