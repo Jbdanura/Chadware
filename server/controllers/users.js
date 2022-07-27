@@ -10,13 +10,16 @@ usersRouter.post("/new",async(req,res)=>{
         .match(
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )){
-            return res.status(400).send("invalid email")
+            return res.status(400).send("Invalid email")
         }
-
-        const exists = await User.findOne({$or:[{username:username},{email:email}]})
-        if(exists){
-            return res.status(400).json("user already exists")
+        const existsUsername = await User.findOne({username:username})
+        if(existsUsername){
+            return res.status(400).send("Username taken")
         }
+        const existsEmail = await User.findOne({email:email})
+        if(existsEmail){
+            return res.status(400).send("Email taken")
+        } 
         const password = await bcrypt.hash(pw,10)
         const user = new User({
             username,

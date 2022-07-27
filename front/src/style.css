@@ -48,7 +48,7 @@ body{
 }
 
 .content{
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 ul{
@@ -64,7 +64,10 @@ ul{
 .categories{
     margin-bottom: 40px;
 }
-
+.sidebar{
+    border-right: 1px solid rgba(0, 0, 0, 0.363);
+    padding-right: 10px;
+}
 .hamburger{
     display: none;
     width: 30px;
@@ -99,7 +102,7 @@ ul{
     border: 1px solid black;
 }
 .deals-title{
-    color: rgb(0, 206, 110);
+    color: rgb(49, 38, 148);
     font-size: 30px;
     margin-left: 30px;
 }
@@ -116,20 +119,40 @@ ul{
 .product-grid{
     margin: 10px;
     max-width: 12vw;
+    border: 1px solid rgba(0, 0, 255, 0.089); 
+    padding: 5px;
+}
+.product-grid:hover{
+    transform: scale(1.05);
 }
 .product-grid img{
     max-width: 12vw;
+    border-bottom: 1px solid rgba(0, 0, 255, 0.089);
 }
 .info-name{
     color: rgb(74, 122, 228);
     font-weight: bold;
 }
+.price{
+    display: flex;
+    justify-content: center;
+}
 .info-price{
     color: rgb(148, 148, 148);
-    text-align: center;
-    font-weight: bolder;
+    font-weight: bold;
+    text-decoration:line-through;
 }
-
+.price-deal{
+    text-decoration: none;
+    color: red;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.create-form{
+    display: block;
+    max-width: 200px;
+}
 @media screen and (max-width: 1000px) {
     .container{
         display: block;
@@ -172,7 +195,7 @@ ul{
     }
     .content{
         max-width: 100vw;
-        margin-left: 0px;
+        margin-left: -40px;
     }
     .product-grid-container{
         display: grid;
