@@ -7,7 +7,7 @@ body{
     font-family: "Helvetica",Arial;
 }
 .intro{
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(48, 47, 112);
 }
 .container{
     padding-top: 20px;
@@ -23,7 +23,7 @@ body{
 }
 .logo{
     width: 80%;
-    height: 350px;
+    height: 330px;
     object-fit: cover;
     display: block;
     margin: 0 auto;
@@ -149,10 +149,83 @@ ul{
     font-size: 20px;
     margin-left: 10px;
 }
-.create-form{
-    display: block;
-    max-width: 200px;
+.modal{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.267);
+    z-index: 1;
+    left: 0;
+    top: 0;
 }
+.modal-close{
+    z-index: 1;
+    color: red;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20vh;
+    padding: 10px;
+    border: 1px solid rgba(255, 0, 0, 0.267);
+}
+.create-form, .login-form{
+    background-color: white;
+    padding: 20px;
+    padding-bottom: 30px;
+    width: 30vw;
+    margin: 0 auto;
+    margin-top: 20vh;
+    display: block;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.modal input{
+    width: 90%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.308);
+    border-radius: 2px;
+    margin-left: 10px;
+}
+.modal p{
+    color: black;
+    font-size: 22px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    text-align: center;
+}
+.modal .submit {
+    padding: 10px 30px;
+    margin-top: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.575);
+    border-radius: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.login-account, .create-account{
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+}
+.login-account{
+    border: 1px solid blue;
+    border-radius: 10px;
+    color: blue;
+    background-color: rgba(0, 0, 255, 0.048);
+    margin-bottom: 5px;
+}
+.create-account{
+    border: 1px solid rgb(0, 104, 0);
+    border-radius: 10px;
+    color: rgb(0, 104, 0);
+    background-color: rgba(0, 104, 0, 0.068);
+    margin-left: 5px;
+    margin-bottom: 30px;
+}
+button:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1000px) {
     .container{
         display: block;
@@ -209,5 +282,15 @@ ul{
     }
     .product-grid img{
         max-width: 25vw;
+    }
+    .create-form, .login-form{
+        width: 50vw;
+    }
+    .modal input{
+        margin-left: 0px;
+    }
+    .modal .submit{
+        margin-left: 0%;
+        transform: none;
     }
 }

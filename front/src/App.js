@@ -10,11 +10,14 @@ import userService from "./services/users"
 const App = () =>{
 
   const [navMobile,setNavMobile] = useState(false)
+  const [user,setUser] = useState(null)
+  const [createModal,setCreateModal] = useState(false)
+  const [loginModal,setLoginModal] = useState(false)
 
-  const handleLogin = async (event) =>{
+  const handleUserLogin = async (event) =>{
       event.preventDefault();
-
   }
+
   const handleUserCreation = async(event)=>{
       event.preventDefault();
       try {
@@ -28,7 +31,8 @@ const App = () =>{
             alert(error.response.data)
       }
   }
-   return(
+
+  return(
       <div>
          <div className="mobile-menu">
             <div className="hamburger" onClick={()=>setNavMobile(!navMobile)}>
@@ -48,13 +52,32 @@ const App = () =>{
          <div className="container">
             <div className={navMobile ? "sidebar-mobile" : "sidebar"}>
                   <div className="user">
-                        <form className="create-form" onSubmit={handleUserCreation}>
-                              <input type="text" placeholder="Username..." name="username"/>
-                              <input type="text" placeholder="Name..." name="name"/>
-                              <input type="email" placeholder="Email..." name="email"/>
-                              <input type="password" placeholder="Password..." name="pw"/>
-                              <button type="Submit">Create</button>
-                        </form>
+                        {!user && <>
+                              <button className="login-account" onClick={()=>setLoginModal(true)}>
+                                    Log in 
+                              </button>
+                              <button className="create-account" onClick={()=>setCreateModal(true)}>Create account</button>
+                              </>}
+                        <div className="modal"  style={createModal ? {display:"block"} : {display:"none"}}>
+                              <button className="modal-close" onClick={()=>setCreateModal(false)}>X</button>
+                              <form className="create-form" onSubmit={handleUserCreation}>
+                                    <p>Create account</p>
+                                    <input type="text" placeholder="Username..." name="username"/>
+                                    <input type="text" placeholder="Name..." name="name"/>
+                                    <input type="email" placeholder="Email..." name="email"/>
+                                    <input type="password" placeholder="Password..." name="pw"/>
+                                    <button className="submit" type="Submit">Create</button>
+                              </form>
+                        </div>
+                        <div className="modal"  style={loginModal ? {display:"block"} : {display:"none"}}>   
+                              <button className="modal-close" onClick={()=>setLoginModal(false)}>X</button>
+                              <form className="login-form" style={loginModal ? {display:"block"} : {display:"none"}} onSubmit={handleUserLogin}>
+                                    <p>Log in</p>
+                                    <input type="text" placeholder="Username..." name="username"/>
+                                    <input type="password" placeholder="Password..." name="pw"/>
+                                    <button className="submit" type="Submit">Create</button>
+                              </form>
+                        </div>
                   </div>
                   <div className="cart">
                         <span className="cart-items"><i className="icon-shopping-cart" style={{marginRight:"5px"}}></i>69 items</span>
