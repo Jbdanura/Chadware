@@ -3,8 +3,11 @@
     padding: 0;
 }
 body{
-    background-color: rgb(37, 37, 37);
+    background-color: white;
     font-family: "Helvetica",Arial;
+}
+.intro{
+    background-color: rgb(37, 37, 37);
 }
 .container{
     padding-top: 20px;
@@ -14,26 +17,28 @@ body{
     color: white;
 }
 .sidebar h4, .sidebar-mobile h4{
-    color: rgb(130, 188, 255);
+    color: rgb(102, 160, 226);
     font-size: 30px;
     margin-bottom: 20px;
 }
 .logo{
     width: 80%;
-    height: 400px;
+    height: 350px;
     object-fit: cover;
     display: block;
     margin: 0 auto;
+    padding-top: 20px;
 }
 .cart{
     padding: 10px;
     border: 1px solid rgb(130, 188, 255);
-    color: rgb(130, 188, 255);
+    color: rgb(81, 158, 245);
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
     width: 90%;
     margin-bottom: 40px;
+    font-weight: bold;
 }
 
 .cart:hover{
@@ -50,7 +55,7 @@ ul{
     list-style-type: none;
 }
 .sidebar li, .sidebar-mobile li{
-    color: rgb(180, 180, 180);
+    color: rgb(67, 76, 117);
     margin: 10px 0;
 }
 .search{
@@ -83,15 +88,18 @@ ul{
 .search-input{
     height: 30px;
     width: 80%;
-    padding: 5px;
+    padding: 5px 10px;
     font-size: 17px;
+    border-radius: 3px;
+    border: 1px solid black;
 }
 .search-btn{
-    padding: 13px;
+    padding: 10px 15px;
     background-color: rgba(0, 255, 55, 0.575);
+    border: 1px solid black;
 }
 .deals-title{
-    color: rgba(0, 255, 55, 0.575);
+    color: rgb(0, 206, 110);
     font-size: 30px;
     margin-left: 30px;
 }
@@ -110,7 +118,7 @@ ul{
     max-width: 12vw;
 }
 .product-grid img{
-    max-width: 13vw;
+    max-width: 12vw;
 }
 .info-name{
     color: rgb(74, 122, 228);
@@ -143,7 +151,8 @@ ul{
         left: 0;
         width: 40vw;
         text-align: center;
-        background-color: rgb(37, 37, 37);
+        padding: 10px;
+        background-color: rgb(248, 248, 248);
         border: 1px solid rgba(0, 0, 0, 0.37);
     }
     .mobile-menu{

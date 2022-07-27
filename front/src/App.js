@@ -23,8 +23,10 @@ const App = () =>{
                   <span className="cart-money">$420</span>
             </div>
          </div>
-         <img className="logo" src={logo}></img>
-         <hr style={{marginTop: "20px", borderColor: "grey"}}></hr>
+         <div className="intro">
+            <img className="logo" src={logo}></img>
+            <hr style={{marginTop: "20px", borderColor: "grey"}}></hr>
+         </div>
          <div className="container">
             <div className={navMobile ? "sidebar-mobile" : "sidebar"}>
                   <div className="cart">
