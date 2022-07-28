@@ -16,6 +16,18 @@ const App = () =>{
 
   const handleUserLogin = async (event) =>{
       event.preventDefault();
+      try {
+            const username = event.target.username.value
+            const pw = event.target.pw.value
+            const login = await userService.login({username,pw})
+            setUser(login.data)
+            alert("Logged in")
+            setLoginModal(false)
+            event.target.username.value = ""
+            event.target.pw.value = ""
+      } catch (error) {
+            alert(error.response.data)
+      }
   }
 
   const handleUserCreation = async(event)=>{
@@ -27,6 +39,11 @@ const App = () =>{
             const pw = event.target.pw.value
             const creation = await userService.create({username,name,email,pw})
             alert("Account created!")
+            setCreateModal(false)
+            event.target.username.value = ""
+            event.target.name.value = ""
+            event.target.email.value = ""
+            event.target.pw.value = ""
       } catch (error) {
             alert(error.response.data)
       }
@@ -52,12 +69,16 @@ const App = () =>{
          <div className="container">
             <div className={navMobile ? "sidebar-mobile" : "sidebar"}>
                   <div className="user">
-                        {!user && <>
+                        {!user ? <>
                               <button className="login-account" onClick={()=>setLoginModal(true)}>
                                     Log in 
                               </button>
                               <button className="create-account" onClick={()=>setCreateModal(true)}>Create account</button>
-                              </>}
+                              </>: <div className="my-account">
+                                    <p>Welcome, {user.name}</p>
+                                    <button>My account</button>
+                                    <span className="logout" onClick={()=>setUser(null)}>Log out</span>
+                              </div>}
                         <div className="modal"  style={createModal ? {display:"block"} : {display:"none"}}>
                               <button className="modal-close" onClick={()=>setCreateModal(false)}>X</button>
                               <form className="create-form" onSubmit={handleUserCreation}>
@@ -75,7 +96,7 @@ const App = () =>{
                                     <p>Log in</p>
                                     <input type="text" placeholder="Username..." name="username"/>
                                     <input type="password" placeholder="Password..." name="pw"/>
-                                    <button className="submit" type="Submit">Create</button>
+                                    <button className="submit" type="Submit">Login</button>
                               </form>
                         </div>
                   </div>

@@ -1,6 +1,7 @@
 const usersRouter = require("express").Router()
 const User = require("../models/user")
 const bcrypt = require("bcrypt")
+const jwt = require('jsonwebtoken')
 
 usersRouter.post("/new",async(req,res)=>{
     try {
@@ -12,6 +13,16 @@ usersRouter.post("/new",async(req,res)=>{
         )){
             return res.status(400).send("Invalid email")
         }
+        if(username.length < 4){
+            return res.status(400).send("Username must be at least 4 characters long!")
+        }
+        if(name.length < 4){
+            return res.status(400).send("Name must be at least 4 characters long!")
+        }
+        if(pw.length < 4){
+            return res.status(400).send("Password must be at least 4 characters long!")
+        }
+
         const existsUsername = await User.findOne({username:username})
         if(existsUsername){
             return res.status(400).send("Username taken")
@@ -40,6 +51,25 @@ usersRouter.get("/all",async(req,res)=>{
         res.status(200).json(users)
     } catch (error) {
         res.status(400).json(error)
+    }
+})
+
+usersRouter.post("/login",async(req,res)=>{
+    try {
+        const {username,pw} = req.body
+        const user = await User.findOne({username:username})
+        const passwordCorrect = user === null ? false : await bcrypt.compare(pw, user.password)
+        if(!(user && passwordCorrect)){
+            return res.status(401).send("Invalid username or password")
+        }
+        const userForToken = {
+            username: user.username,
+            id: user._id
+        }
+        const token = jwt.sign(userForToken,process.env.SECRET)
+        res.status(200).send({token, username: username, name: user.name})
+    } catch (error) {
+        res.status(400).send(error)
     }
 })
 

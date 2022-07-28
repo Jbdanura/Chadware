@@ -102,7 +102,7 @@ ul{
     border: 1px solid black;
 }
 .deals-title{
-    color: rgb(49, 38, 148);
+    color: rgb(38, 104, 148);
     font-size: 30px;
     margin-left: 30px;
 }
@@ -204,19 +204,17 @@ ul{
 }
 .login-account, .create-account{
     font-size: 20px;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
 }
 .login-account{
     border: 1px solid blue;
-    border-radius: 10px;
     color: blue;
     background-color: rgba(0, 0, 255, 0.048);
     margin-bottom: 5px;
 }
 .create-account{
     border: 1px solid rgb(0, 104, 0);
-    border-radius: 10px;
     color: rgb(0, 104, 0);
     background-color: rgba(0, 104, 0, 0.068);
     margin-left: 5px;
@@ -225,7 +223,27 @@ ul{
 button:hover{
     cursor: pointer;
 }
-
+.my-account{
+    color: black;
+}
+.my-account button{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.082);
+    background-color: rgba(0, 0, 0, 0.068);
+    padding: 7px 15px;
+}
+.logout{
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: rgb(94, 111, 163);
+    font-style: italic;
+}
+.logout:hover{
+    cursor: pointer;
+}
 @media screen and (max-width: 1000px) {
     .container{
         display: block;
