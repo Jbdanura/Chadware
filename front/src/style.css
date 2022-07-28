@@ -203,7 +203,7 @@ ul{
     transform: translateX(-50%);
 }
 .login-account, .create-account{
-    font-size: 20px;
+    font-size: 17px;
     padding: 10px 20px;
     border: none;
 }
