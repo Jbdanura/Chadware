@@ -91,8 +91,6 @@ const Sidebar = ({setUser,user,navMobile}) => {
                     <li>RAM</li>
                     <li>Graphics Card</li>
                     <li>Hard drive</li>
-                    <li>Monitor</li>
-                    <li>Peripheric</li>
                     <li>Power supply</li>
                     <li>Case</li>
             </ul>
