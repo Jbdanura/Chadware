@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-color: white;
+    background-color: rgb(241, 241, 241);
     font-family: "Helvetica",Arial;
 }
 .intro{
@@ -56,6 +56,7 @@ ul{
 }
 .sidebar li, .sidebar-mobile li{
     color: rgb(67, 76, 117);
+
     margin: 10px 0;
 }
 .search{
@@ -65,7 +66,7 @@ ul{
     margin-bottom: 40px;
 }
 .sidebar{
-    border-right: 1px solid rgba(0, 0, 0, 0.363);
+    border-right: 1px solid rgba(0, 0, 0, 0.096);
     padding-right: 10px;
 }
 .hamburger{
@@ -92,7 +93,7 @@ ul{
     height: 30px;
     width: 80%;
     padding: 5px 10px;
-    font-size: 17px;
+    font-size: 15px;
     border-radius: 3px;
     border: 1px solid black;
 }
@@ -102,7 +103,8 @@ ul{
     border: 1px solid black;
 }
 .deals-title{
-    color: rgb(38, 104, 148);
+    color: rgb(136, 117, 221);
+    -webkit-text-stroke: 0.5px black; 
     font-size: 30px;
     margin-left: 30px;
 }
@@ -119,8 +121,10 @@ ul{
 .product-grid{
     margin: 10px;
     max-width: 12vw;
+    border-radius: 5px;
     border: 1px solid rgba(0, 0, 255, 0.089); 
-    padding: 5px;
+    padding: 5px 10px;
+    background-color: white;
 }
 .product-grid:hover{
     transform: scale(1.05);
@@ -208,17 +212,25 @@ ul{
     border: none;
 }
 .login-account{
-    border: 1px solid blue;
+    border: 1px solid rgba(0, 0, 255, 0.26);
     color: blue;
     background-color: rgba(0, 0, 255, 0.048);
     margin-bottom: 5px;
 }
+.login-account:hover{
+    background-color: rgba(14, 41, 131, 0.253);
+    color: black;
+}
 .create-account{
-    border: 1px solid rgb(0, 104, 0);
+    border: 1px solid rgba(0, 104, 0, 0.384);
     color: rgb(0, 104, 0);
     background-color: rgba(0, 104, 0, 0.068);
     margin-left: 5px;
     margin-bottom: 30px;
+}
+.create-account:hover{
+    background-color: rgba(57, 131, 14, 0.253);
+    color: black;
 }
 button:hover{
     cursor: pointer;
@@ -244,7 +256,13 @@ button:hover{
 .logout:hover{
     cursor: pointer;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1300px) {
+    .product-grid-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media screen and (max-width: 1050px) {
     .container{
         display: block;
     }
@@ -310,5 +328,40 @@ button:hover{
     .modal .submit{
         margin-left: 0%;
         transform: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    .product-grid-container{
+        grid-template-columns: 1fr 1fr;
+    }
+    .product-grid{
+        max-width: 35vw;
+    }
+    .product-grid img{
+        max-width: 35vw;
+    }
+    .sidebar-mobile h4{
+        font-size: 20px;
+    }
+    .content{
+        margin-left: -20px;
+    }
+    .logo{
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        object-position: -350px;
+        display: block;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+}
+@media screen and (max-width:300px){
+    .logo{
+        object-position: -450px;
+    }  
+    .content{
+        margin-left: -30px;
     }
 }

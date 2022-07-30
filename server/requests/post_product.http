@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/products/new
+Content-Type: application/json
+
+{
+    "name": "Gigabyte GeForce RTX 2060 D6 6GB GDDR6 Rev 2.0",
+    "category": "GPU",
+    "price":450,
+    "deal":true,
+    "dealPrice":320
+}

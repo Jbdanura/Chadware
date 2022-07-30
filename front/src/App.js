@@ -14,7 +14,7 @@ const App = () =>{
             <Sidebar setUser={setUser} user={user} navMobile={navMobile}/>
             <Deals/>
          </div>
-         </div>
+      </div>
       );
 
 }
