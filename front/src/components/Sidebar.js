@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import userService from "../services/users"
 
 const Sidebar = ({setUser,user,navMobile}) => {
@@ -45,9 +46,9 @@ const Sidebar = ({setUser,user,navMobile}) => {
         <div className="user">
             {!user ? <>
                     <button className="login-account" onClick={()=>setLoginModal(true)}>
-                        Log in 
+                        <i class="icon-user"></i>Log in 
                     </button>
-                    <button className="create-account" onClick={()=>setCreateModal(true)}>Create account</button>
+                    <button className="create-account" onClick={()=>setCreateModal(true)}><i class="icon-user"></i>Create account</button>
                     </>: <div className="my-account">
                         <p>Welcome, {user.name}</p>
                         <button>My account</button>
@@ -86,20 +87,21 @@ const Sidebar = ({setUser,user,navMobile}) => {
         <div className="categories">
             <h4>Categories</h4>
             <ul>
-                    <li>Motherboard</li>
-                    <li>CPU</li>
-                    <li>RAM</li>
-                    <li>Graphics Card</li>
-                    <li>Hard drive</li>
-                    <li>Power supply</li>
-                    <li>Case</li>
+                    <li><Link to="/" style={{fontSize: "20px"}}><i class="icon-home"></i></Link></li>
+                    <li><Link to="/category/motherboard">Motherboard</Link></li>
+                    <li><Link to="/category/cpu">CPU</Link></li>
+                    <li><Link to="/category/ram">RAM</Link></li>
+                    <li><Link to="/category/graphics-card">Graphics Card</Link></li>
+                    <li><Link to="/category/hard-drive">Hard drive</Link></li>
+                    <li><Link to="/category/power-supply">Power supply</Link></li>
+                    <li><Link to="/category/case">Case</Link></li>
             </ul>
         </div>
         <div className="pages">
             <h4>Pages</h4>
             <ul>
-                    <li>About</li>
-                    <li>Contact</li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
             </ul>
         </div>
     </div>

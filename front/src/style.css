@@ -56,7 +56,6 @@ ul{
 }
 .sidebar li, .sidebar-mobile li{
     color: rgb(67, 76, 117);
-
     margin: 10px 0;
 }
 .search{
@@ -255,6 +254,14 @@ button:hover{
 }
 .logout:hover{
     cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.icon-user{
+    margin-left: -10px;
+    margin-right: 5px;
 }
 @media screen and (max-width: 1300px) {
     .product-grid-container{
