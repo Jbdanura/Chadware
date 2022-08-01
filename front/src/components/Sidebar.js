@@ -46,9 +46,9 @@ const Sidebar = ({setUser,user,navMobile}) => {
         <div className="user">
             {!user ? <>
                     <button className="login-account" onClick={()=>setLoginModal(true)}>
-                        <i class="icon-user"></i>Log in 
+                        <i className="icon-user"></i>Log in 
                     </button>
-                    <button className="create-account" onClick={()=>setCreateModal(true)}><i class="icon-user"></i>Create account</button>
+                    <button className="create-account" onClick={()=>setCreateModal(true)}><i className="icon-user"></i>Create account</button>
                     </>: <div className="my-account">
                         <p>Welcome, {user.name}</p>
                         <button>My account</button>
@@ -81,20 +81,20 @@ const Sidebar = ({setUser,user,navMobile}) => {
         </div>
         <div className="search">
             <input type="text" className="search-input" placeholder='Search...'/>
-            <button className="search-btn"><i class="icon-search"></i></button>
+            <button className="search-btn"><i className="icon-search"></i></button>
         </div>
 
         <div className="categories">
             <h4>Categories</h4>
             <ul>
-                    <li><Link to="/" style={{fontSize: "20px"}}><i class="icon-home"></i></Link></li>
-                    <li><Link to="/category/motherboard">Motherboard</Link></li>
-                    <li><Link to="/category/cpu">CPU</Link></li>
-                    <li><Link to="/category/ram">RAM</Link></li>
-                    <li><Link to="/category/graphics-card">Graphics Card</Link></li>
-                    <li><Link to="/category/hard-drive">Hard drive</Link></li>
-                    <li><Link to="/category/power-supply">Power supply</Link></li>
-                    <li><Link to="/category/case">Case</Link></li>
+                    <li><Link to="/" style={{fontSize: "20px"}}><i className="icon-home"></i></Link></li>
+                    <li><Link to="/category/Motherboard">Motherboard</Link></li>
+                    <li><Link to="/category/CPU">CPU</Link></li>
+                    <li><Link to="/category/RAM">RAM</Link></li>
+                    <li><Link to="/category/GPU">Graphics Card</Link></li>
+                    <li><Link to="/category/HDD">Hard drive</Link></li>
+                    <li><Link to="/category/PSU">Power supply</Link></li>
+                    <li><Link to="/category/Case">Case</Link></li>
             </ul>
         </div>
         <div className="pages">
