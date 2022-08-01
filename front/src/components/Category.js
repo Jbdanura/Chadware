@@ -27,8 +27,8 @@ const Category = () => {
                               <p className="info-price">${product.price}</p>
                               <span className="price-deal">${product.dealPrice}</span>
                             </> : <p className="normal-price">${product.price}</p>}
-
                         </div>
+                        <button className="info-btn">BUY</button>
                     </div>
                 </div>
             })}

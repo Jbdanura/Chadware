@@ -26,6 +26,7 @@ const Deals = () => {
                                     <p className="info-price">${product.price}</p>
                                     <span className="price-deal">${product.dealPrice}</span>
                                 </div>
+                                <button className="info-btn">BUY</button>
                             </div>
                         </div>
                     })}
