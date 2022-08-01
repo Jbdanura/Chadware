@@ -13,9 +13,21 @@ const Category = () => {
     getProducts()
   },[category])
 
+  const orderProducts = async(event) => {
+    axios.get(`http://localhost:3003/api/products/category/${category}?order=${event.target.value}`).then(result=>setProducts(result.data))
+  }
+
   return (
     <div className="category-container">
       <p className="title">{category}</p>
+      <div className="order-dropdown">
+          <label htmlFor="order">Order by:</label>
+          <select name="order" onChange={()=>orderProducts(event)}>
+          <option value="">-</option>
+            <option value="highest">Highest</option>
+            <option value="lowest">Lowest</option>
+          </select>
+        </div>
         <div className="product-grid-container category-grid">
             {products.map((product,i)=>{
                 return  <div className="product-grid" key={i}>
