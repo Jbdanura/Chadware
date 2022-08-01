@@ -176,7 +176,7 @@ ul{
     background-color: white;
     padding: 20px;
     padding-bottom: 30px;
-    width: 30vw;
+    width: 25vw;
     margin: 0 auto;
     margin-top: 20vh;
     display: block;
@@ -184,12 +184,11 @@ ul{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .modal input{
-    width: 90%;
-    margin: 10px 0;
+    width: 60%;
+    margin: 5px auto;
     padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.308);
-    border-radius: 2px;
-    margin-left: 10px;
+    display: flex;
+    justify-content: center;
 }
 .modal p{
     color: black;
@@ -287,7 +286,14 @@ a{
     font-weight: bolder;
 }
 .order-dropdown{
-    margin-top: 15px;
+    margin-top: 25px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.order-dropdown select{
+    font-size: 18px;
+    margin-left: 10px;
+    padding: 5px 15px;
 }
 @media screen and (max-width: 1050px) {
     .container{
@@ -349,9 +355,7 @@ a{
     .create-form, .login-form{
         width: 50vw;
     }
-    .modal input{
-        margin-left: 0px;
-    }
+
     .modal .submit{
         margin-left: 0%;
         transform: none;
