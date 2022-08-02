@@ -1,6 +1,5 @@
 const productsRouter = require("express").Router()
 const Product = require("../models/product")
-const path = require("path")
 
 productsRouter.get("/all", async(req,res)=>{
     try {
@@ -18,19 +17,34 @@ productsRouter.get("/deals",async(req,res)=>{
         res.status(404).send(error)
     }
 })
-productsRouter.get("/image/:id",async(req,res)=>{
+productsRouter.get("/product/:id",async(req,res)=>{
     try {
-        const id = req.params.id
-        res.sendFile(path.resolve(__dirname + "/../files/"+id+".png"))
+        const product = await Product.findOne({_id:req.params.id})
+        res.json(product)
     } catch (error) {
-        console.log(error)
+        res.status(404).send(error)
+    }
+})
+productsRouter.get("/category/:category",async(req,res)=>{
+    try {
+        let products
+        if(req.query.order){
+            if(req.query.order === "highest"){
+                products = await Product.find({category:req.params.category}).sort({price:-1})
+            } else {
+                products = await Product.find({category:req.params.category}).sort({price:1})
+            }
+        } else {
+            products = await Product.find({category:req.params.category})
+        }
+        res.json(products)
+    } catch (error) {
         res.status(404).send(error)
     }
 })
 
 productsRouter.post("/new",async(req,res)=>{
     try {
-        console.log(req.body)
         const name = req.body.name
         const category = req.body.category
         const price = req.body.price
@@ -47,7 +61,6 @@ productsRouter.post("/new",async(req,res)=>{
         res.status(200).json(product)
     } catch (error) {
         res.status(400).json(error)
-        console.log(error)
     }
 })
 

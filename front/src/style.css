@@ -295,6 +295,63 @@ a{
     margin-left: 10px;
     padding: 5px 15px;
 }
+.product-detail-container{
+    margin-left: 50px;
+    margin-top: 20px;
+    background-color: white;
+    padding-bottom: 30px;
+    width: 60vw;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-height: 500px;
+}
+.product-detail{
+    display: flex;
+    padding: 10px 0px 0px 50px;
+}
+.product-detail img{
+    width: 25vw;
+}
+.product-detail-info{
+    margin-left: 50px;
+    color: black;
+    font-size: 25px;
+    margin-top: 20px;
+}
+.product-detail-info .name{
+    font-weight: 600;
+}
+.product-detail-info .price{
+    display: block;
+    color: #f06108;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 30px;
+}
+.quantity{
+    display: flex;
+    font-size: 20px;
+    margin-top: 50px;
+}
+.quantity button{
+    padding: 5px 15px;
+    margin: 0px 10px;
+}
+.quantity .minus{
+    background-color: rgba(255, 0, 0, 0.76);
+    border: 1px solid rgb(156, 0, 0);
+}
+.quantity .plus{
+    background-color: green;
+    border: 1px solid rgba(0, 73, 0, 0.699);
+}
+.to-cart{
+    padding: 10px 40px;
+    border: 1px solid #8a3602;
+    background-color: #f06108;
+    border-radius: 5px;
+    margin-top: 50px;
+}
 @media screen and (max-width: 1050px) {
     .container{
         display: block;
@@ -312,6 +369,7 @@ a{
     .sidebar-mobile{
         display: block;
         position: absolute;
+        z-index: 1;
         top: 50px;
         left: 0;
         width: 40vw;
@@ -363,6 +421,11 @@ a{
     .category-grid{
         margin-left: -70px;
     }
+    .product-detail-container{
+        margin-left: 0px;
+        width: 80vw;
+    }
+
 }
 @media screen and (max-width: 600px) {
     .product-grid-container{
@@ -389,6 +452,23 @@ a{
         margin: 0 auto;
         padding-top: 20px;
     }
+    .product-detail{
+        display: block;
+        text-align: center;
+    }
+    .product-detail-info{
+        font-size: 20px;
+    }
+    .product-detail img{
+        margin: 0 auto;
+        display: block;
+    }
+    .product-detail{
+        padding: 10px;
+    }
+    .product-detail-info{
+        margin-left: 0px;
+    }
 
 }
 @media screen and (max-width:300px){
@@ -398,4 +478,5 @@ a{
     .content{
         margin-left: -30px;
     }
+
 }

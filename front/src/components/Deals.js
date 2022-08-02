@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import { Link } from 'react-router-dom'
 
 const Deals = () => {
   const [products,setProducts] = useState([])
@@ -18,7 +19,7 @@ const Deals = () => {
             <div className="deals-products">
                 <div className="product-grid-container">
                     {products.map((product,i)=>{
-                        return  <div className="product-grid" key={i}>
+                        return  <Link to={"/product/"+product.id}><div className="product-grid" key={i}>
                             <div className="info">
                                 <img className="info-img" src={`http://localhost:3003/${product.id}.png`}></img>
                                 <p className="info-name">{product.name}</p>
@@ -28,7 +29,7 @@ const Deals = () => {
                                 </div>
                                 <button className="info-btn">BUY</button>
                             </div>
-                        </div>
+                        </div></Link>
                     })}
                 </div>
         </div>
