@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom'
 
-const Deals = () => {
+const Deals = ({baseUrl}) => {
   const [products,setProducts] = useState([])
 
   useEffect(()=>{
     const getProducts = async() =>{
-        await axios.get("http://localhost:3003/api/products/deals")
+        await axios.get(baseUrl + "api/products/deals")
         .then(result=>setProducts(result.data))
     }
     getProducts()
@@ -21,7 +21,7 @@ const Deals = () => {
                     {products.map((product,i)=>{
                         return  <Link to={"/product/"+product.id} key={i}><div className="product-grid" >
                             <div className="info">
-                                <img className="info-img" src={`http://localhost:3003/${product.id}.png`}></img>
+                                <img className="info-img" src={`${baseUrl + product.id}.png`}></img>
                                 <p className="info-name">{product.name}</p>
                                 <div className="price">
                                     <p className="info-price">${product.price}</p>

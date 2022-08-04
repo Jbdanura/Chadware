@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import userService from "../services/users"
 
-const Sidebar = ({setUser,user,navMobile}) => {
+const Sidebar = ({baseUrl,setUser,user,navMobile,cartItems,cartPrice}) => {
   const [createModal,setCreateModal] = useState(false)
   const [loginModal,setLoginModal] = useState(false)
 
@@ -48,7 +48,7 @@ const Sidebar = ({setUser,user,navMobile}) => {
   const searchProduct = async(event)=>{
     event.preventDefault()
     const name = event.target.product.value
-    axios.get("http://localhost:3003/api/products/search/"+name)
+    axios.get(baseUrl + "api/products/search/"+name)
     .then((result)=>{
         if(result.data){
             navigate(`/product/${result.data.id}`)
@@ -90,10 +90,10 @@ const Sidebar = ({setUser,user,navMobile}) => {
                     </form>
             </div>
         </div>
-        <div className="cart">
-            <span className="cart-items"><i className="icon-shopping-cart" style={{marginRight:"5px"}}></i>69 items</span>
-            <span className="cart-money">$420</span>
-        </div>
+        <Link to="/cart"><div className="cart">
+            <span className="cart-items"><i className="icon-shopping-cart" style={{marginRight:"5px"}}></i>{cartItems} items</span>
+            <span className="cart-money">${cartPrice}</span>
+        </div></Link>
         <form className="search" onSubmit={searchProduct}>
             <input type="text" className="search-input" name="product" placeholder='Search...'/>
             <button className="search-btn" type="submit"><i className="icon-search"></i></button>

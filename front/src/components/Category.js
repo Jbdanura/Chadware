@@ -3,19 +3,19 @@ import {useParams,Link} from "react-router-dom"
 import axios from "axios"
 
 
-const Category = () => {
+const Category = ({baseUrl}) => {
   const category = useParams().category
   const [products,setProducts] = useState([])
 
   useEffect(()=>{
     const getProducts = async () => {
-      axios.get("http://localhost:3003/api/products/category/"+category).then(result=>setProducts(result.data))
+      axios.get(baseUrl + "api/products/category/"+category).then(result=>setProducts(result.data))
     }
     getProducts()
   },[category])
 
   const orderProducts = async(event) => {
-    axios.get(`http://localhost:3003/api/products/category/${category}?order=${event.target.value}`).then(result=>setProducts(result.data))
+    axios.get(baseUrl + `api/products/category/${category}?order=${event.target.value}`).then(result=>setProducts(result.data))
   }
 
   return (
@@ -31,9 +31,9 @@ const Category = () => {
         </div>
         <div className="product-grid-container category-grid">
             {products.map((product,i)=>{
-                return  <Link to={"/product/"+product.id}><div className="product-grid" key={i}>
+                return  <Link to={"/product/"+product.id} key={i}><div className="product-grid" >
                     <div className="info">
-                        <img className="info-img" src={`http://localhost:3003/${product.id}.png`}></img>
+                        <img className="info-img" src={`${baseUrl + product.id}.png`}></img>
                         <p className="info-name">{product.name}</p>
                         <div className="price">
                             {product.deal ? <>
@@ -41,8 +41,8 @@ const Category = () => {
                               <span className="price-deal">${product.dealPrice}</span>
                             </> : <p className="normal-price">${product.price}</p>}
                         </div>
-                        <button className="info-btn">BUY</button>
                     </div>
+                    <button className="info-btn">BUY</button>
                 </div></Link>
             })}
           </div>
