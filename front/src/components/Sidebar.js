@@ -1,11 +1,14 @@
+import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import userService from "../services/users"
 
 const Sidebar = ({setUser,user,navMobile}) => {
   const [createModal,setCreateModal] = useState(false)
   const [loginModal,setLoginModal] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleUserLogin = async (event) =>{
     event.preventDefault();
@@ -41,6 +44,18 @@ const Sidebar = ({setUser,user,navMobile}) => {
         alert(error.response.data)
     }
   }
+
+  const searchProduct = async(event)=>{
+    event.preventDefault()
+    const name = event.target.product.value
+    axios.get("http://localhost:3003/api/products/search/"+name)
+    .then((result)=>{
+        if(result.data){
+            navigate(`/product/${result.data.id}`)
+        }
+    })
+  }
+
   return (
     <div className={navMobile ? "sidebar-mobile" : "sidebar"}>
         <div className="user">
@@ -79,10 +94,10 @@ const Sidebar = ({setUser,user,navMobile}) => {
             <span className="cart-items"><i className="icon-shopping-cart" style={{marginRight:"5px"}}></i>69 items</span>
             <span className="cart-money">$420</span>
         </div>
-        <div className="search">
-            <input type="text" className="search-input" placeholder='Search...'/>
-            <button className="search-btn"><i className="icon-search"></i></button>
-        </div>
+        <form className="search" onSubmit={searchProduct}>
+            <input type="text" className="search-input" name="product" placeholder='Search...'/>
+            <button className="search-btn" type="submit"><i className="icon-search"></i></button>
+        </form>
 
         <div className="categories">
             <h4>Categories</h4>
@@ -101,7 +116,6 @@ const Sidebar = ({setUser,user,navMobile}) => {
             <h4>Pages</h4>
             <ul>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
             </ul>
         </div>
     </div>

@@ -25,6 +25,15 @@ productsRouter.get("/product/:id",async(req,res)=>{
         res.status(404).send(error)
     }
 })
+productsRouter.get("/search/:name",async(req,res)=>{
+    try {
+        const name = req.params.name
+        const product = await Product.findOne({"name": { "$regex": name, "$options": "i" }})
+        res.json(product)
+    } catch (error) {
+        res.status(404).send(error)
+    }
+})
 productsRouter.get("/category/:category",async(req,res)=>{
     try {
         let products

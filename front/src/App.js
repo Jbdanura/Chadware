@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Deals from "./components/Deals"
 import Topbar from './components/Topbar';
-import {BrowserRouter as Router, Routes,Route,HashRouter} from "react-router-dom"
+import {Routes,Route,HashRouter} from "react-router-dom"
 import Category from './components/Category';
 import About from './components/About';
-import Contact from './components/Contact';
 import ProductDetail from './components/ProductDetail';
 
 const App = () =>{
@@ -22,7 +21,6 @@ const App = () =>{
                   <Route path="/category/:category" element={<Category/>}/>
                   <Route path="/" element={<Deals/>}/>
                   <Route path="/about" element={<About/>}/>
-                  <Route path="/contact" element={<Contact/>}/>
                   <Route path="/product/:product" element={<ProductDetail/>}/>
                </Routes>
             </HashRouter>

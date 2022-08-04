@@ -120,11 +120,15 @@ ul{
 .product-grid{
     margin: 10px;
     max-width: 12vw;
+    min-height: 370px;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 255, 0.089); 
     padding: 5px 10px;
     background-color: white;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .product-grid:hover{
     transform: scale(1.05);
@@ -284,6 +288,7 @@ a{
     margin-top: 10px;
     color: white;
     font-weight: bolder;
+    margin-bottom: 10px;
 }
 .order-dropdown{
     margin-top: 25px;
@@ -433,6 +438,8 @@ a{
     }
     .product-grid{
         max-width: 35vw;
+        margin: 10px;
+        min-height: 330px;
     }
     .product-grid img{
         max-width: 35vw;

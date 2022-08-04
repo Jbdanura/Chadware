@@ -6,9 +6,10 @@ const ProductDetail = () => {
   const [product,setProduct] = useState(null)
   const [quantity,setQuantity] = useState(0)
   const id = useParams().product
+  
   useEffect(()=>{
     axios.get("http://localhost:3003/api/products/product/"+id).then(result=>setProduct(result.data))
-  },[])
+  },[product])
 
   const changeQuantity = (plus) => {
     if(plus){

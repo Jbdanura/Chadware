@@ -19,7 +19,7 @@ const Deals = () => {
             <div className="deals-products">
                 <div className="product-grid-container">
                     {products.map((product,i)=>{
-                        return  <Link to={"/product/"+product.id}><div className="product-grid" key={i}>
+                        return  <Link to={"/product/"+product.id} key={i}><div className="product-grid" >
                             <div className="info">
                                 <img className="info-img" src={`http://localhost:3003/${product.id}.png`}></img>
                                 <p className="info-name">{product.name}</p>
@@ -27,8 +27,8 @@ const Deals = () => {
                                     <p className="info-price">${product.price}</p>
                                     <span className="price-deal">${product.dealPrice}</span>
                                 </div>
-                                <button className="info-btn">BUY</button>
                             </div>
+                            <button className="info-btn">BUY</button>
                         </div></Link>
                     })}
                 </div>
