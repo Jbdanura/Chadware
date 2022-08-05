@@ -1,12 +1,27 @@
 import axios from "axios"
+const baseUrl = "http://localhost:3003/"
+
+let token = null
+
+const setToken = (newToken) => {
+    token = `bearer ${newToken}`
+}
 
 const login = async(credentials) => {
-    const response = await axios.post("http://localhost:3003/api/users/login", credentials)
+    const response = await axios.post(baseUrl + "api/users/login", credentials)
     return response
 }
 
 const create = async(credentials) => {
-    const response = await axios.post("http://localhost:3003/api/users/new",credentials)
+    const response = await axios.post(baseUrl + "api/users/new",credentials)
     return response
 }
-export default {login, create}
+
+const updateCart = async(cart)=>{
+    const config = {
+        headers: {Authorization: token}
+    }
+    const response = await axios.post(baseUrl + "api/users/cart", cart, config)
+    return response.data
+}
+export default {login, create,updateCart,setToken}

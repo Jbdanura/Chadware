@@ -430,6 +430,17 @@ body{
     border-radius: 10px;
     margin-top: 10px;
 }
+.deal-price-container .price{
+    color: grey;
+    text-decoration: line-through;
+    font-weight: 100;
+    font-size: 23px;
+}
+.deal-price-container .deal-price{
+    color: red;
+    font-size: 30px;
+    font-weight: bolder;
+}
 @media screen and (max-width: 1050px) {
     .container{
         display: block;

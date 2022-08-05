@@ -37,7 +37,10 @@ const ProductDetail = ({baseUrl,addItem}) => {
             <img src={`${baseUrl + product.id}.png`}/>
             <div className="product-detail-info">
                 <p className="name">{product.name}</p>
-                <p className="price">${product.price}</p>
+                {product.deal ? <div className="deal-price-container">
+                  <p className="price">${product.price}</p>
+                  <p className="deal-price">${product.dealPrice}</p>
+                </div> : <p className="price">${product.price}</p>}
                 <div className="quantity">
                     <p>Quantity: </p>
                     <button className="minus" onClick={()=>changeQuantity(false)}>-</button>

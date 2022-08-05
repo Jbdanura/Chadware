@@ -7,6 +7,8 @@ import Category from './components/Category';
 import About from './components/About';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
+import axios from 'axios';
+import userService from "./services/users"
 
 const App = () =>{
   const [navMobile,setNavMobile] = useState(false)
@@ -26,28 +28,35 @@ const App = () =>{
       } else {
          setCart([...cart,item])
       }
-      
       setCartItems(cartItems + item.quantity)
-      setCartPrice(cartPrice + (item.price*item.quantity))
+      let itemPrice
+      if(item.deal){
+         itemPrice = item.dealPrice
+      } else {
+         itemPrice = item.price
+      }
+      setCartPrice(cartPrice + (itemPrice*item.quantity))
+      userService.updateCart(cart)
   }
   const changeQuantity = (id,plus)=>{
       const product = cart.find(i => i.id === id)
       if(product){
+         let productPrice = product.deal ? product.dealPrice : product.price    
          if(!plus && product.quantity > 1){
             product.quantity -= 1
             setCartItems(cartItems-1)
-            setCartPrice(cartPrice-product.price)
+            setCartPrice(cartPrice-productPrice)
          } else if (!plus && product.quantity === 1){
             const newCart = cart.filter(i => i.id !== id)
             setCart(newCart)
             setCartItems(cartItems-1)
-            setCartPrice(cartPrice-product.price)
+            setCartPrice(cartPrice-productPrice)
             return
          }
          if(plus){
             product.quantity += 1
             setCartItems(cartItems+1)
-            setCartPrice(cartPrice+product.price)
+            setCartPrice(cartPrice+productPrice)
          }
       }
       const newCart = cart.filter(i => i.id !== id ? i : product)

@@ -19,6 +19,7 @@ const Sidebar = ({baseUrl,setUser,user,navMobile,cartItems,cartPrice}) => {
         setUser(login.data)
         alert("Logged in")
         setLoginModal(false)
+        userService.setToken(user.token)
         event.target.username.value = ""
         event.target.pw.value = ""
     } catch (error) {

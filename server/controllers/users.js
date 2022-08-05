@@ -3,6 +3,14 @@ const User = require("../models/user")
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken')
 
+const getTokenFrom = request => {
+    const authorization = request.get('authorization')
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+      return authorization.substring(7)
+    }
+    return null
+}  
+
 usersRouter.post("/new",async(req,res)=>{
     try {
         const {username,name,email,pw} = req.body
@@ -71,6 +79,12 @@ usersRouter.post("/login",async(req,res)=>{
     } catch (error) {
         res.status(400).send(error)
     }
+})
+usersRouter.post("/cart", async(req,res)=>{
+    const body = req.body
+    console.log(req)
+    const token = getTokenFrom(req)
+    console.log(token)
 })
 
 module.exports = usersRouter

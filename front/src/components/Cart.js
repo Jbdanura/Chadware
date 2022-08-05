@@ -3,7 +3,7 @@ import React from 'react'
 const Cart = ({baseUrl,cart,cartPrice, changeQuantity}) => {
   console.log(cart)
   return (
-    <div className="cart-detail">
+    <div className={cart.length > 0 && "cart-detail"}>
       {cart.length > 0 ? cart.map((product,i)=>{
         return <div className="cart-detail-product" key={i}>
           <img className="img" src={`${baseUrl + product.id}.png`}/>
@@ -15,7 +15,8 @@ const Cart = ({baseUrl,cart,cartPrice, changeQuantity}) => {
                 <button onClick={()=>changeQuantity(product.id, true)} className="plus">+</button></p>
               </div>
               <span className="price-item">
-                Price per unit: <span style={{textDecoration:"underline", color: 'rgba(0, 73, 0, 0.699)', display:"block", marginLeft: "5px"}}>${product.price}</span></span>
+                Price per unit: <span style={{textDecoration:"underline", color: 'rgba(0, 73, 0, 0.699)', display:"block", marginLeft: "5px"}}>$
+                {product.deal ? product.dealPrice : product.price}</span></span>
             </div>
           </div>
         </div>
