@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Deals from "./components/Deals"
 import Topbar from './components/Topbar';
@@ -19,7 +19,7 @@ const App = () =>{
 
   const baseUrl = "http://localhost:3003/"
 
-  const addItem = (item) => {
+  const addItem = async(item) => {
       const repeated = cart.find(i => i.id === item.id)
       if(repeated){
          repeated.quantity += item.quantity
@@ -36,9 +36,11 @@ const App = () =>{
          itemPrice = item.price
       }
       setCartPrice(cartPrice + (itemPrice*item.quantity))
-      userService.updateCart(cart)
+      if(user){
+         userService.updateCart(cart)
+      }
   }
-  const changeQuantity = (id,plus)=>{
+  const changeQuantity = async(id,plus)=>{
       const product = cart.find(i => i.id === id)
       if(product){
          let productPrice = product.deal ? product.dealPrice : product.price    
@@ -61,14 +63,18 @@ const App = () =>{
       }
       const newCart = cart.filter(i => i.id !== id ? i : product)
       setCart(newCart)
+      if(user){
+         userService.updateCart(cart)
+      }
   }
-  console.log(cart)
+
   return(
       <div>
          <HashRouter>
          <Topbar setNavMobile={setNavMobile} navMobile={navMobile} cartItems={cartItems} cartPrice={cartPrice}/>
          <div className="container">  
-               <Sidebar baseUrl={baseUrl} setUser={setUser} user={user} navMobile={navMobile} cartItems={cartItems} cartPrice={cartPrice}/>
+               <Sidebar baseUrl={baseUrl} setUser={setUser} user={user} navMobile={navMobile} cartItems={cartItems} 
+               cartPrice={cartPrice} setCart={setCart} setCartItems={setCartItems} setCartPrice={setCartPrice}/>
                <Routes>
                   <Route path="/category/:category" element={<Category baseUrl={baseUrl}/>}/>
                   <Route path="/" element={<Deals baseUrl={baseUrl}/>}/>

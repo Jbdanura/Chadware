@@ -21,7 +21,12 @@ const updateCart = async(cart)=>{
     const config = {
         headers: {Authorization: token}
     }
-    const response = await axios.post(baseUrl + "api/users/cart", cart, config)
+    const response = await axios.post(baseUrl + "api/users/cart", {cart}, config)
     return response.data
 }
-export default {login, create,updateCart,setToken}
+const getCart = async(username)=>{
+    const response = await axios.get(`${baseUrl}api/users/cart/${username}`)
+    return response.data
+}
+
+export default {login, create,updateCart,getCart,setToken}

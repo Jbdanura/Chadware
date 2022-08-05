@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import userService from "../services/users"
 
-const Sidebar = ({baseUrl,setUser,user,navMobile,cartItems,cartPrice}) => {
+const Sidebar = ({baseUrl,setUser,user,navMobile,cartItems,cartPrice,setCart,setCartItems,setCartPrice}) => {
   const [createModal,setCreateModal] = useState(false)
   const [loginModal,setLoginModal] = useState(false)
 
@@ -19,7 +19,21 @@ const Sidebar = ({baseUrl,setUser,user,navMobile,cartItems,cartPrice}) => {
         setUser(login.data)
         alert("Logged in")
         setLoginModal(false)
-        userService.setToken(user.token)
+        userService.setToken(login.data.token)
+        const cart = await userService.getCart(login.data.username)
+        if(cart.length > 0){
+            setCart(cart)
+            let total = 0;
+            let items = 0;
+            for(let i = 0; i < cart.length; i++){
+                items += cart[i].quantity
+                const price = cart[i].deal ? cart[i].dealPrice : cart[i].price
+                console.log(price)
+                total += price * cart[i].quantity
+            }
+            setCartItems(items)
+            setCartPrice(total)
+        }
         event.target.username.value = ""
         event.target.pw.value = ""
     } catch (error) {
@@ -67,7 +81,6 @@ const Sidebar = ({baseUrl,setUser,user,navMobile,cartItems,cartPrice}) => {
                     <button className="create-account" onClick={()=>setCreateModal(true)}><i className="icon-user"></i>Create account</button>
                     </>: <div className="my-account">
                         <p>Welcome, {user.name}</p>
-                        <button>My account</button>
                         <span className="logout" onClick={()=>setUser(null)}>Log out</span>
                     </div>}
             <div className="modal"  style={createModal ? {display:"block"} : {display:"none"}}>

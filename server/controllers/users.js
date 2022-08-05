@@ -81,10 +81,29 @@ usersRouter.post("/login",async(req,res)=>{
     }
 })
 usersRouter.post("/cart", async(req,res)=>{
-    const body = req.body
-    console.log(req)
-    const token = getTokenFrom(req)
-    console.log(token)
+    try {
+        const cart = req.body.cart
+        const token = getTokenFrom(req)
+        const decodedToken = jwt.verify(token,process.env.SECRET)
+        if(!decodedToken.id){
+            return response.status(401).send('invalid token')
+        }
+        const user = await User.findById(decodedToken.id)
+        user.cart = cart
+        await user.save()
+        res.status(200)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+usersRouter.get("/cart/:username",async(req,res)=>{
+    try{
+        const user = await User.findOne({username:req.params.username})
+        res.status(200).json(user.cart)
+    }catch(error){
+        console.log(error)
+        res.status(400).send(error)
+    }
 })
 
 module.exports = usersRouter

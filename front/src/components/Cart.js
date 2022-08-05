@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Cart = ({baseUrl,cart,cartPrice, changeQuantity}) => {
-  console.log(cart)
   return (
     <div className={cart.length > 0 && "cart-detail"}>
       {cart.length > 0 ? cart.map((product,i)=>{
