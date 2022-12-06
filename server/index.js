@@ -16,11 +16,8 @@ mongoose.connect(MONGODB_URI)
     })
 
 const https = require("https");
-const http = require("http");
 setInterval(function() {
     https.get("https://chadware.onrender.com");
-    https.get("https://paquipatelo.ga");
-    http.get("http://paquipatelo.ga");
 }, 300000)
 
 app.use(cors())
