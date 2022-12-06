@@ -15,6 +15,11 @@ mongoose.connect(MONGODB_URI)
         logger.error('error connecting to MongoDB:', error.message)
     })
 
+const https = require("https");
+setInterval(function() {
+    https.get("https://chadware.onrender.com");
+}, 300000)
+
 app.use(cors())
 app.use(express.json())
 app.use(express.static('files'))
