@@ -24,6 +24,16 @@ setInterval(function() {
     }
 }, 300000)
 
+const http = require("http");
+setInterval(function() {
+    try{
+        http.get("http://paquipatelo.ga");
+    } catch (error){
+        console.log(error)
+    }
+}, 3000000)
+
+
 app.use(cors())
 app.use(express.json())
 app.use(express.static('files'))
