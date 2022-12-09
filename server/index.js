@@ -28,6 +28,7 @@ const http = require("http");
 setInterval(function() {
     try{
         http.get("http://paquipatelo.ga");
+        https.get("https://paquipatelo.ga");
     } catch (error){
         console.log(error)
     }
