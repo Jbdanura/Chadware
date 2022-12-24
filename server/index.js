@@ -22,7 +22,7 @@ setInterval(function() {
     } catch (error){
         console.log(error)
     }
-}, 300000)
+}, 900000)
 
 const http = require("http");
 setInterval(function() {
