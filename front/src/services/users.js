@@ -24,7 +24,7 @@ const updateCart = async(cart)=>{
     const response = await axios.post(baseUrl + "api/users/cart", {cart}, config)
     return response.data
 }
-const getCart = async(usrname)=>{
+const getCart = async()=>{
     const config = {
         headers: {Authorization: token}
     }
