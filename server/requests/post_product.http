@@ -1,0 +1,8 @@
+POST http://localhost:3003/api/products/new
+Content-Type: application/json
+
+{
+    "name": "Tempest Spectra RGB Torre ATX Blanca",
+    "category": "Case",
+    "price":44
+}
