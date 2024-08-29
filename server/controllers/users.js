@@ -2,6 +2,7 @@ const usersRouter = require("express").Router()
 const User = require("../models/user")
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken')
+const Product = require("../models/product")
 
 const getTokenFrom = request => {
     const authorization = request.get('authorization')
@@ -89,10 +90,27 @@ usersRouter.post("/cart", async(req,res)=>{
             return response.status(401).send('invalid token')
         }
         const user = await User.findById(decodedToken.id)
-        user.cart = cart
+        const safeCart = []
+        for(let i = 0; i < cart.length; i++){
+            const product = await Product.findById(cart[i].id)
+
+            const newProduct = {}
+            newProduct.id = product._id.toString()
+            newProduct.name = product.name
+            newProduct.category = product.category
+            newProduct.deal = product.deal
+            newProduct.dealPrice = product.dealPrice
+            newProduct.quantity = cart[i].quantity
+
+            safeCart.push(newProduct)
+        }
+
+        user.cart = safeCart
         await user.save()
+        console.log(user.cart)
         res.status(200)
     } catch (error) {
+        console.log("error",error)
         res.status(400).send(error)
     }
 })

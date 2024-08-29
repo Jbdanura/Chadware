@@ -25,8 +25,15 @@ const App = () =>{
          repeated.quantity += item.quantity
          const newCart = cart.filter(product => product.id !== item.id)
          setCart([...newCart,repeated])
+         if(user){
+            userService.updateCart(newCart)
+         }
       } else {
-         setCart([...cart,item])
+         const newCart = [...cart]
+         newCart.push(item)
+         console.log("new cart:",newCart)
+         setCart(newCart)
+         userService.updateCart(newCart);
       }
       setCartItems(cartItems + item.quantity)
       let itemPrice
@@ -36,10 +43,7 @@ const App = () =>{
          itemPrice = item.price
       }
       setCartPrice(cartPrice + (itemPrice*item.quantity))
-      if(user){
-         userService.updateCart(cart)
-      }
-      console.log(cart)
+
   }
   const changeQuantity = async(id,plus)=>{
       const product = cart.find(i => i.id === id)
@@ -65,9 +69,9 @@ const App = () =>{
       const newCart = cart.filter(i => i.id !== id ? i : product)
       setCart(newCart)
       if(user){
-         userService.updateCart(cart)
+         userService.updateCart(newCart)
       }
-      console.log(cart)
+
   }
 
   return(
