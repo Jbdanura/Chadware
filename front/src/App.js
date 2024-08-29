@@ -17,7 +17,7 @@ const App = () =>{
   const [cartItems,setCartItems] = useState(0)
   const [cartPrice,setCartPrice] = useState(0)
 
-  const baseUrl = "http://localhost:3003/"
+  const baseUrl = "https://chadware-7qkl.onrender.com/"
 
   const addItem = async(item) => {
       const repeated = cart.find(i => i.id === item.id)
@@ -73,6 +73,14 @@ const App = () =>{
       }
 
   }
+  
+   useEffect(()=>{
+      const loggedUser = localStorage.getItem("user")
+      if(loggedUser){
+      const foundUser = JSON.parse(loggedUser)
+      setUser(foundUser)
+      }
+   },[])
 
   return(
       <div>

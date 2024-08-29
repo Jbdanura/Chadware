@@ -129,4 +129,9 @@ usersRouter.get("/cart",async(req,res)=>{
     }
 })
 
+usersRouter.get("/health-check",async(req,res)=>{
+    return res.status(200)
+})
+
+
 module.exports = usersRouter

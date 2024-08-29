@@ -1,5 +1,5 @@
 import axios from "axios"
-const baseUrl = "http://localhost:3003/"
+const baseUrl = "https://chadware-7qkl.onrender.com/"
 
 let token = null
 
